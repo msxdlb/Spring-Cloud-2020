@@ -16,3 +16,10 @@ spring:
         healthCheckInterval: 5s     #健康检查频率
         port: ${server.port}        #注册服务所在端口
 
+ribbon:
+  ReadTimeout: 5000  #请求处理的超时时间 5秒
+  ConnectTimeout: 3000   #请求连接的超时时间 3秒
+
+logging:
+  level:
+    top.msxdlb.springcloud.service.OrderService: debug  #日志打印级别

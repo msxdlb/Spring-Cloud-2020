@@ -35,6 +35,12 @@
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
         </dependency>
 
+        <!--服务调用 openFeign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!--测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
