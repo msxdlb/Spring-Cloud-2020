@@ -13,6 +13,8 @@
         <module>cloud-consumer-order80</module>
         <module>cloud-provider-consul8006</module>
         <module>cloud-consumer-consul80</module>
+        <module>cloud-provider-hystrix-paymen8001</module>
+        <module>cloud-consumer-hystrix-payment80</module>
     </modules>
     <packaging>pom</packaging>
 
