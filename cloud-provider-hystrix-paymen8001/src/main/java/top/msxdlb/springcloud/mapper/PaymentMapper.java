@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import top.msxdlb.springcloud.bean.entity.Payment;
 
 /**
- * Created by Lb on 2020/4/20
+ * Create By LB on 2020/4/21.
  */
 public interface PaymentMapper extends BaseMapper<Payment> {
 }

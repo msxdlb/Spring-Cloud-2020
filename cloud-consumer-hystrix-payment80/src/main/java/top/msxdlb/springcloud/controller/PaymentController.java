@@ -21,14 +21,17 @@ public class PaymentController {
     private PaymentFeignService paymentFeignService;
 
     @GetMapping("/consumer/payment/get/{id}")
-    RespResult<Payment> getPaymentById(@PathVariable("id") Integer id){
+    public RespResult<Payment> getPaymentById(@PathVariable("id") Integer id){
         log.info("我是使用的Feign");
         return  paymentFeignService.getPaymentById(id);
     }
 
     @GetMapping("/consumer/payment/feign/timeout/{id}")
-    RespResult<Payment> paymentFeignTimeout(@PathVariable("id") Integer id){
+    public RespResult<Payment> paymentFeignTimeout(@PathVariable("id") Integer id){
         log.info("我是使用的Feign");
         return  paymentFeignService.paymentFeignTimeout(id);
     }
+
+    //==========================================================================
+
 }

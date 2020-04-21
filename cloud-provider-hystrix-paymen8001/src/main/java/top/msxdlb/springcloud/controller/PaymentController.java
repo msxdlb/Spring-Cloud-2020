@@ -1,7 +1,6 @@
 package top.msxdlb.springcloud.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +24,7 @@ public class PaymentController {
 
     @GetMapping("/payment/hystrix/ok/{id}")
     public RespResult<Payment> getPaymentById(@PathVariable("id") Integer id) {
+        log.info(" hystrix 8001 ok ");
         Payment payment = paymentService.getById(id);
         if(payment == null){
             return new RespResult<>(444, "查询为空");
@@ -32,7 +32,7 @@ public class PaymentController {
         return RespResult.success(payment);
     }
 
-    @GetMapping("/payment/hystrix/ok/{id}")
+    @GetMapping("/payment/hystrix/Timeout/{id}")
     public RespResult<Payment> paymentFeignTimeout(@PathVariable("id") Integer id) {
         try {
             TimeUnit.SECONDS.sleep(4); //让线程睡4秒
