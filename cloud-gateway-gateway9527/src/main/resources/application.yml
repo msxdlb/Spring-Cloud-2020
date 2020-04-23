@@ -1,0 +1,35 @@
+
+
+server:
+  port: 9527 #端口号
+
+spring:
+  application:
+    name: cloud-gateway  #服务名
+  cloud:
+    consul:
+      host: localhost      #consul的IP
+      port: 8500           #consul启动端口默认8500
+      discovery:
+        service-name: ${spring.application.name}
+        prefer-ip-address: true     #不写这个配置，在docker下的consul里面健康检查会失败
+        healthCheckInterval: 5s     #健康检查频率
+        port: ${server.port}        #注册服务所在端口
+    gateway:
+      discovery:
+        locator:
+          enabled: true  #开启从注册中心动态创建路由的功能，利用微服务名进行路由
+      routes:
+        - id: payment_route_1              #路由id，随便写，建议配合服务名
+          uri: http://localhost:8888      #一定要匹配提供服务的路由地址
+#          uri: lb://cloud-hystrix-provider-service
+          predicates:
+            - Path=/payment/** #断言，路径想匹配的进行路由
+#            - Header=token, cloud-gateway
+        - id: payment_route_2             #路由id，随便写，建议配合服务名
+          uri: http://localhost:8888      #一定要匹配提供服务的路由地址
+#          uri: lb://cloud-hystrix-provider-service
+          #https://cloud.spring.io/spring-cloud-static/Hoxton.SR3/reference/htmlsingle/#gateway-request-predicates-factories
+          predicates:
+            - Path=/payment/hystrix/Timeout/**
+#            - Header=token, cloud-gateway
